@@ -1,0 +1,29 @@
+{
+  "name": "dev-env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "connect-livereload": "^0.5.2",
+    "del": "^1.1.1",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-filter": "^2.0.0",
+    "gulp-inject": "^1.1.1",
+    "gulp-jade": "^0.11.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sequence": "^0.3.1",
+    "gulp-stylus": "^2.0.0",
+    "main-bower-files": "^2.5.0"
+  },
+  "dependencies": {
+    "express": "^4.11.2",
+    "gulp-livereload": "^3.7.0"
+  }
+}
