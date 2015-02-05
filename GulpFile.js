@@ -63,16 +63,13 @@ function Tasks() {
   /////////////////
 
   function templates() {
-    var filter  = $.filter('**/*.jade');
     var files   = gulp.src(paths.client.jade);
     var dest    = gulp.dest( paths.build.dir.templates );
 
     return files
-      .pipe( filter)
       .pipe($.plumber())
       .pipe($.jade())
       .pipe($.plumber.stop())
-      .pipe( filter.restore())
       .pipe( dest )
   }
   function scripts() {
@@ -86,18 +83,14 @@ function Tasks() {
       .pipe( dest )
   }
   function styles() {
-    var filter = $.filter('**/*.styl');
-    var files = gulp.src([ paths.client.css, paths.client.styl.index ]);
+    var files = gulp.src(  paths.client.styl.index);
     var dest  = gulp.dest( paths.build.dir.styles );
 
     return files
-      .pipe( filter)
       .pipe($.plumber())
       .pipe($.stylus())
       .pipe($.concat('app.css'))
       .pipe($.plumber.stop())
-      .pipe( filter.restore())
-      .pipe($.concat('app.css'))
       .pipe( dest )
   }
   function inject() {
