@@ -50,6 +50,37 @@ gulp
               , 'watch:dev'
               ));
 
+/*  TODO
+
+  BUILD the stage tasks
+  There are descriptions on what is needed in order to use build each task within the task file.
+  Declare each Task
+  The run the declared tasks using $.sequence
+  Example
+
+    gulp
+      .task('stage',
+        $.sequence(  'build:stage'
+                     'start:stage'))
+
+    gulp
+      .task('js:stage'   , tasks.js.stage   )
+      .task('css:stage'  , tasks.css.stage  )
+      .task('html:stage' , tasks.html.stage )
+      .task('build:stage',
+        $.sequence( 'js:stage'
+                  , 'css:stage'
+                  , 'html:stage'))
+
+    gulp
+      .task('stage:stage',
+        $.sequence( / LIST TASKS HERE /))
+
+*/
+
+
+//
+
 //================== CLEAN
 gulp
   .task('clean', del.bind(null, ['build']));
