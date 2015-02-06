@@ -5,10 +5,10 @@
   var $    = require('gulp-load-plugins');
   var del  = require('del');
   var steps = { 1: {all : p('./1-environment-architect'), root:'./1-environment-architect'}
-              , 2: {all : p('./1-angular-architect'    ), root:'./1-angular-architect'    }
-              , 3: {all : p('./1-node-architect'       ), root:'./1-node-architect'       }
-              , 4: {all : p('./1-express-architect'    ), root:'./1-express-architect'    }
-              , 5: {all : p('./1-deploy-architect'     ), root:'./1-deploy-architect'     }
+              , 2: {all : p('./2-angular-architect'    ), root:'./2-angular-architect'    }
+              , 3: {all : p('./3-node-architect'       ), root:'./3-node-architect'       }
+              , 4: {all : p('./4-express-architect'    ), root:'./4-express-architect'    }
+              , 5: {all : p('./5-deploy-architect'     ), root:'./5-deploy-architect'     }
               }
 
   gulp
@@ -32,8 +32,9 @@
           .pipe(gulp.dest(steps[num].root))
     }
   }
+
   function reset(num) {
-    return del.bind(null, [steps(num)+'/**/*'])
+    return del.bind(null, [steps[num].root+'/**/*'])
   }
 
 
