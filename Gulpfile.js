@@ -1,90 +1,45 @@
 ;(function() {
   'use strict';
 
-  /*  Dependencies  */
-  var lib    = require('./lib')
-  var gulp   = require('gulp');
-  var $      = require('gulp-load-plugins')({lazy:false});
-  var del    = require('del');
+  var gulp = require('gulp');
+  var $    = require('gulp-load-plugins');
+  var del  = require('del');
+  var steps = { 1: {all : p('./1-environment-architect'), root:'./1-environment-architect'}
+              , 2: {all : p('./1-angular-architect'    ), root:'./1-angular-architect'    }
+              , 3: {all : p('./1-node-architect'       ), root:'./1-node-architect'       }
+              , 4: {all : p('./1-express-architect'    ), root:'./1-express-architect'    }
+              , 5: {all : p('./1-deploy-architect'     ), root:'./1-deploy-architect'     }
+              }
 
-  /* Tasks */
+  gulp
+    .task('step-2', task(2))
+    .task('step-3', task(3))
+    .task('step-4', task(4))
+    .task('step-5', task(5))
+    ;
 
-var tasks = lib.tasks
-
-//================== DEV
-gulp
-  .task( 'default',
-    $.sequence( 'clean'
-              , 'build:dev'
-              , 'start:dev'
-              ));
-
-// ====== BUILD
-gulp
-  .task( 'js:dev'    , tasks.js.dev     )
-  .task( 'css:dev'   , tasks.css.dev    )
-  .task( 'styl:dev'  , tasks.styl.dev   )
-  .task( 'html:dev'  , tasks.html.dev   )
-  .task( 'jade:dev'  , tasks.jade.dev   )
-  .task( 'images:dev', tasks.images.dev )
-  .task( 'build:dev' ,
-    $.sequence( 'js:dev'
-              , 'css:dev'
-              , 'styl:dev'
-              , 'html:dev'
-              , 'jade:dev'
-              , 'images:dev'
-              ));
-
-// ====== START
-gulp
-  .task( 'vendor:dev' , tasks.vendor.dev )
-  .task( 'inject:dev' , tasks.inject.dev )
-  .task( 'server:dev' , tasks.server.dev )
-  .task( 'watch:dev'  , tasks.watch.dev  )
-  .task( 'start:dev'  ,
-    $.sequence(
-                'vendor:dev'
-              , 'inject:dev'
-              , 'server:dev'
-              , 'watch:dev'
-              ));
-
-/*  TODO
-
-  BUILD the stage tasks
-  There are descriptions on what is needed in order to use build each task within the task file.
-  Declare each Task
-  The run the declared tasks using $.sequence
-  Example
-
-    gulp
-      .task('stage',
-        $.sequence(  'build:stage'
-                     'start:stage'))
-
-    gulp
-      .task('js:stage'   , tasks.js.stage   )
-      .task('css:stage'  , tasks.css.stage  )
-      .task('html:stage' , tasks.html.stage )
-      .task('build:stage',
-        $.sequence( 'js:stage'
-                  , 'css:stage'
-                  , 'html:stage'))
-
-    gulp
-      .task('stage:stage',
-        $.sequence( / LIST TASKS HERE /))
-
-*/
+  gulp
+    .task('reset-2', reset(2))
+    .task('reset-3', reset(3))
+    .task('reset-4', reset(4))
+    .task('reset-5', reset(5))
+    ;
 
 
-//
+  function task(num) {
+    return function() {
+      return gulp.src(steps[num-1].all)
+          .pipe(gulp.dest(steps[num].root))
+    }
+  }
+  function reset(num) {
+    return del.bind(null, [steps(num)+'/**/*'])
+  }
 
-//================== CLEAN
-gulp
-  .task('clean', del.bind(null, ['build']));
 
+  function p(str){
+    return [str + '/**/*', str +'/**/.*', '!'+str+'/build', '!'+str+'/paths.json'];
+  }
 
 
 })();

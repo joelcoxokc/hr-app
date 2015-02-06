@@ -1,4 +1,5 @@
 node_modules
-lib/bower_components
-build
-paths.json
+**/node_modules
+**/lib/bower_components
+**/build
+**/paths.json
