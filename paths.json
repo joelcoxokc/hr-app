@@ -1,0 +1,46 @@
+{
+  "root": "/Users/joelcox1/Dev/projects/builder/",
+  "client": {
+    "root": "/Users/joelcox1/Dev/projects/builder/src/client",
+    "app": "/Users/joelcox1/Dev/projects/builder/src/client/app",
+    "index": "/Users/joelcox1/Dev/projects/builder/src/client/index.html",
+    "jade": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.jade",
+    "html": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.html",
+    "js": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.js",
+    "css": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.css",
+    "styl": {
+      "index": "/Users/joelcox1/Dev/projects/builder/src/client/app/index.styl",
+      "all": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.styl"
+    }
+  },
+  "vendor": {
+    "root": "/Users/joelcox1/Dev/projects/builder/build/vendor",
+    "all": "/Users/joelcox1/Dev/projects/builder/build/vendor/**/*",
+    "js": "/Users/joelcox1/Dev/projects/builder/build/vendor/js/**/*",
+    "css": "/Users/joelcox1/Dev/projects/builder/build/vendor/css/**/*",
+    "fonts": "/Users/joelcox1/Dev/projects/builder/build/vendor/fonts/**/*",
+    "dir": {
+      "js": "/Users/joelcox1/Dev/projects/builder/build/vendor/js",
+      "css": "/Users/joelcox1/Dev/projects/builder/build/vendor/css",
+      "fonts": "/Users/joelcox1/Dev/projects/builder/build/vendor/fonts"
+    }
+  },
+  "build": {
+    "root": "/Users/joelcox1/Dev/projects/builder/build",
+    "all": "/Users/joelcox1/Dev/projects/builder/build/**/*",
+    "index": "/Users/joelcox1/Dev/projects/builder/build/index.html",
+    "js": "/Users/joelcox1/Dev/projects/builder/build/js/**/*",
+    "css": "/Users/joelcox1/Dev/projects/builder/build/css/**/*",
+    "vendor": "/Users/joelcox1/Dev/projects/builder/build/vendor/**/*",
+    "templates": "/Users/joelcox1/Dev/projects/builder/build/templates/**/*",
+    "dir": {
+      "js": "/Users/joelcox1/Dev/projects/builder/build/js",
+      "css": "/Users/joelcox1/Dev/projects/builder/build/css",
+      "vendor": "/Users/joelcox1/Dev/projects/builder/build/vendor",
+      "templates": "/Users/joelcox1/Dev/projects/builder/build/templates"
+    }
+  },
+  "server": {
+    "root": "/Users/joelcox1/Dev/projects/builder/src/server/index.js"
+  }
+}
