@@ -25,11 +25,13 @@
     "gulp-plumber": "^0.6.6",
     "gulp-rename": "^1.2.0",
     "gulp-sequence": "^0.3.1",
+    "gulp-strip-debug": "^1.0.2",
     "gulp-stylus": "^2.0.0",
     "gulp-uglify": "^1.1.0",
     "main-bower-files": "^2.5.0"
   },
   "dependencies": {
+    "colors": "^1.0.3",
     "express": "^4.11.2",
     "lodash": "^3.1.0"
   }
