@@ -6,6 +6,7 @@
   var del     = require('del');
   var fs      = require('fs-utils');
   var config = require('./lessons.json');
+  var install = require("gulp-install");
   require('colors');
 
   var steps = { 1: {all : p('./1-environment-architect'), root:'./1-environment-architect'}
@@ -21,16 +22,22 @@
     .task('default', function(done){
       done()
       showBanner()
+      console.log(steps[1].all)
     })
 
 
 
+  gulp
+    .task('clean-2', clean(2))
+    .task('clean-3', clean(3))
+    .task('clean-4', clean(4))
+    .task('clean-5', clean(5))
 
   gulp
-    .task('step-2', task(2))
-    .task('step-3', task(3))
-    .task('step-4', task(4))
-    .task('step-5', task(5))
+    .task('step-2', ['clean-2'], task(2))
+    .task('step-3', ['clean-3'], task(3))
+    .task('step-4', ['clean-4'], task(4))
+    .task('step-5', ['clean-5'], task(5))
     ;
 
   gulp
@@ -40,20 +47,24 @@
     .task('reset-5', reset(5))
     ;
 
-
   function task(num) {
     return function() {
-      del([steps[num].root+'/**/*'])
+
       fs.writeJSONSync('lessons.json', {lesson:num})
+      console.log(banner + 'Please wait while I transfer your project ...'.bold.red)
+      console.log(banner + 'This may take up to 30 s'.bold.red)
       return gulp.src(steps[num-1].all)
           .pipe(gulp.dest(steps[num].root))
     }
   }
 
   function reset(num) {
-    return del.bind(null, [steps[num].root+'/**/*'])
+    return del.bind(null, [steps[num].root])
   }
 
+  function clean(num) {
+    return del.bind(null, [steps[num-1].root + '/build', steps[num-1].root + '/paths.json'])
+  }
 
   function showBanner(){
     console.log()
@@ -69,7 +80,7 @@
   }
 
   function p(str){
-    return [str + '/**/*', str +'/**/.*', '!'+str+'/build', '!'+str+'/paths.json'];
+    return [str + '/**/*', str + '/.*'];
   }
 
 
