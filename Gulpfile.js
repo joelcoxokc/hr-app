@@ -1,4 +1,4 @@
-(function() {
+;(function() {
   'use strict';
 
   /*  Dependencies  */
@@ -7,25 +7,18 @@
   var $      = require('gulp-load-plugins')({lazy:false});
   var del    = require('del');
 
-
   /* Tasks */
 
-  var tasks = lib.tasks
+var tasks = lib.tasks
 
 //================== DEV
-
-// gulp.task('find', function(){
-//   var found = this.finder(paths.client.root);
-//     console.log(found);
-// })
-
 gulp
   .task( 'default',
-    $.sequence( 'clean'
+    $.sequence( 'dirs'
+              , 'clean'
               , 'build:dev'
               , 'start:dev'
-              ))
-
+              ));
 
 // ====== BUILD
 gulp
@@ -34,13 +27,13 @@ gulp
   .task( 'styl:dev'  , tasks.styl.dev )
   .task( 'html:dev'  , tasks.html.dev )
   .task( 'jade:dev'  , tasks.jade.dev )
-  .task( 'build:dev',
+  .task( 'build:dev' ,
     $.sequence( 'js:dev'
               , 'css:dev'
               , 'styl:dev'
               , 'html:dev'
               , 'jade:dev'
-              ))
+              ));
 
 // ====== START
 gulp
@@ -54,12 +47,15 @@ gulp
               , 'inject:dev'
               , 'server:dev'
               , 'watch:dev'
-              ))
+              ));
 
 //================== CLEAN
-
+gulp
+  .task('clean', del.bind(null, ['build']));
 
 gulp
-  .task('clean', del.bind(null, ['build']))
+  .task('dirs', function(){
+    require('./lib/directory')()
+  });
 
 })();
