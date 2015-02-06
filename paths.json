@@ -6,6 +6,7 @@
   "client": {
     "root": "/Users/joelcox1/Dev/projects/builder/src/client",
     "index": "/Users/joelcox1/Dev/projects/builder/src/client/index.html",
+    "images": "/Users/joelcox1/Dev/projects/builder/src/client/images/**/*",
     "js": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.js",
     "css": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.css",
     "jade": "/Users/joelcox1/Dev/projects/builder/src/client/app/**/*.jade",
@@ -26,7 +27,8 @@
       "js": "/Users/joelcox1/Dev/projects/builder/build/js",
       "css": "/Users/joelcox1/Dev/projects/builder/build/css",
       "html": "/Users/joelcox1/Dev/projects/builder/build/html",
-      "vendor": "/Users/joelcox1/Dev/projects/builder/build/vendor"
+      "vendor": "/Users/joelcox1/Dev/projects/builder/build/vendor",
+      "images": "/Users/joelcox1/Dev/projects/builder/build/images"
     }
   }
 }

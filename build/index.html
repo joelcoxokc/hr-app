@@ -10,16 +10,25 @@
 <link rel="stylesheet" href="/css/stylus.css">
 <!-- endinject -->
 </head>
-<body>
+<body data-ng-controller="AppController">
+
+  <div class="title">
+    <h1>
+      <img src="images/hackreactor.png">
+      <span>Hack Reactor</span>
+     </h1>
+  </h1>
 
 <!-- vendor:js -->
 <script src="/vendor/angular/angular.js"></script>
 <script src="/vendor/jquery/dist/jquery.js"></script>
+<script src="/vendor/gsap/src/uncompressed/TweenMax.js"></script>
 <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
 <!-- endinject -->
 
 <!-- app:js -->
 <script src="/js/app.js"></script>
+<script src="/js/core/controllers/app.controller.js"></script>
 <!-- endinject -->
 
 <!-- templates:js -->

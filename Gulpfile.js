@@ -14,25 +14,26 @@ var tasks = lib.tasks
 //================== DEV
 gulp
   .task( 'default',
-    $.sequence( 'dirs'
-              , 'clean'
+    $.sequence( 'clean'
               , 'build:dev'
               , 'start:dev'
               ));
 
 // ====== BUILD
 gulp
-  .task( 'js:dev'    , tasks.js.dev   )
-  .task( 'css:dev'   , tasks.css.dev  )
-  .task( 'styl:dev'  , tasks.styl.dev )
-  .task( 'html:dev'  , tasks.html.dev )
-  .task( 'jade:dev'  , tasks.jade.dev )
+  .task( 'js:dev'    , tasks.js.dev     )
+  .task( 'css:dev'   , tasks.css.dev    )
+  .task( 'styl:dev'  , tasks.styl.dev   )
+  .task( 'html:dev'  , tasks.html.dev   )
+  .task( 'jade:dev'  , tasks.jade.dev   )
+  .task( 'images:dev', tasks.images.dev )
   .task( 'build:dev' ,
     $.sequence( 'js:dev'
               , 'css:dev'
               , 'styl:dev'
               , 'html:dev'
               , 'jade:dev'
+              , 'images:dev'
               ));
 
 // ====== START
@@ -53,9 +54,6 @@ gulp
 gulp
   .task('clean', del.bind(null, ['build']));
 
-gulp
-  .task('dirs', function(){
-    require('./lib/directory')()
-  });
+
 
 })();
